@@ -40,3 +40,15 @@ The only files you need are `pine.n` and `yourcode.pine`.
 Now all you have to do is run `neko pine.n yourcode.pine`
 
 This will generate output.html in the same directory.
+
+### Issues
+
+Pine uses various characters to indicate HTML features. For example, the @ character indicates the beginning of a HTML element. If you use the @ character in your text, the Pine compiler think that you are starting a new HTML element. 
+
+Pine does not support inline Javascript. However, it is easy to embed external Javascript:
+
+```
+@script(src="main.js"){
+
+}
+```
