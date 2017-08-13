@@ -1,0 +1,29 @@
+@html{
+    
+    @head{
+        @title{
+            Title
+        }
+    }
+
+    @body{
+        @h1{
+            Header 1
+        }
+
+        @p(id="test"){
+            Paragraph
+        }
+
+        @p(id="another-test"){
+            Another Paragraph
+        }
+
+        @script(src="main.js"){
+            
+        }
+
+    }  
+}
+
+

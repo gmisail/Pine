@@ -1,0 +1,5 @@
+-cp src
+-main Pine
+
+-neko pine.n
+-cmd neko pine.n draft.pine
