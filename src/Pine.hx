@@ -11,6 +11,9 @@ class Pine
     static var filename : String;
     static var filecontent : String;
 
+    static var pardonindex = 0;
+    static var pardonflag = false;
+
     static var file : String = "";
 
     public static function main(){
@@ -23,8 +26,8 @@ class Pine
 
         Sys.println("(Pine) Parsing...");
 
+        //var output = Parser.parse();
         parse();
-
 
         Sys.println("(Pine) Creating file: output.html");
         File.saveContent("output.html", file);
@@ -45,16 +48,11 @@ class Pine
 
     public static function parse(){
         var elementname = "";
-
         var properties = "";
-        var propertyname = "";
-        var propertyvalue = "";
-
+        
         var tags = [];
 
         var propertypolling = false;
-        var namepolling = false;
-        var valuepolling = false;
         var pollingelement = false;
         var textpolling = true;
         
@@ -63,7 +61,7 @@ class Pine
             var chars = l.split("");
            
             for (char in chars){
-                if (pollingelement){
+                if (pollingelement && !pardonflag){
                     textpolling = false;
 
                     if (char == "("){
@@ -100,16 +98,39 @@ class Pine
 
 
                 if (char != " "){
-                    if (char == "@"){
+                    if (char == "@" && !pardonflag){
                         pollingelement = true;
                     }
-                    else if (char == "}"){
+                    else if (char == "}" && !pardonflag){
                         addClosingTag(tags.pop());
+                    }
+                    else if (char == "~"){
+                        pardonindex += 1;
+
+                        if(pardonindex == 3){
+                            pardonflag = true;
+                            pardonindex = 0;
+                        }
+                    }
+                    else{
+                        pardonindex = 0;
                     }
                 }
 
-                if (textpolling){
-                    if (char != "@" && char != "{" && char != "}"){
+                if(pardonflag){
+                    if(char == "~"){
+                        pardonindex += 1;
+                        if(pardonindex == 3){
+                            pardonflag = false;
+                            pardonindex = 0;
+                        }
+                    }else{
+                        file += char;
+                    }
+                }
+
+                if (textpolling && !pardonflag){
+                    if (char != "@" && char != "{" && char != "}" && char != "~"){
                         file += char;
                     }
                 }
