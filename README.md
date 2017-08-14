@@ -43,12 +43,11 @@ This will generate output.html in the same directory.
 
 ### Issues
 
-Pine uses various characters to indicate HTML features. For example, the @ character indicates the beginning of a HTML element. If you use the @ character in your text, the Pine compiler think that you are starting a new HTML element. 
-
-Pine does not support inline Javascript. However, it is easy to embed external Javascript:
-
+In order to embed Javascript in your Pine code, you need to surround it with 3 tildas on each side. For example:
 ```
-@script(src="main.js"){
-
-}
+~~~
+var test = new Object();
+~~~
 ```
+
+The tildas turn on a flag in the compiler which will stop parsing the code. You can use tildas on Pine characters, such as @, {, and }, to write them in text without conflict from the compiler.
