@@ -1,31 +1,19 @@
 @html{
+    @head{
+        @title{
+            Title!
+        }
+
+    }
+
     @body{
         @h1{
-            Header!
+            Header
         }
-        
+
         @p{
-            Paragraph 
-             
-            ~~~
-             Look at this! @ @ @ @ @ @ { } { }
-            ~~~
-
-            @script{
-                ~~~
-                    var obj = {
-                        test: "Hello!"
-                    };
-
-                    console.log(obj.test);
-
-                    function test(){
-                        console.log("it works");
-                    }
-
-                    test();
-                ~~~
-            }
+            Paragraph
         }
     }
 }
+
