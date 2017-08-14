@@ -1,7 +1,7 @@
 # Pine
 A language that compiles to HTML code.
 
-The language itself is similar to Javascript in some regards, however it lacks nearly all of its features.
+The language itself is similar to Javascript visually.
 
 ### Example
 
@@ -14,6 +14,11 @@ The language itself is similar to Javascript in some regards, however it lacks n
         
         @p{
             Paragraph
+           
+            ~~~
+            This text will be ignored by the compiler! I can put HTML code in here if I want!
+            <h1>Test</h1>
+            ~~~
             
             @div(id="test"){
                 This is a div element with the id "test"!
@@ -23,11 +28,7 @@ The language itself is similar to Javascript in some regards, however it lacks n
 }
 ```
 
-Compiles to...
 
-```
-<html><body><h1>Header!</h1><p>Paragraph<div id="test">This is a div element with the id "test"!</div></p></body></html>
-```
 
 ### How to Use
 
